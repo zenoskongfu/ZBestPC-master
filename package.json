@@ -6,18 +6,22 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "webpack",
-		"build:vue": "webpack -c webpack.vue.config.js"
+		"build:vue": "webpack -c webpack.vue.config.js",
+		"dev": "webpack-dev-server -c webpack.vue.config.js"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
+		"clean-webpack-plugin": "^4.0.0",
 		"copy-webpack-plugin": "^12.0.2",
 		"css-loader": "^6.10.0",
 		"html-webpack-plugin": "^5.6.0",
 		"style-loader": "^3.3.4",
+		"vue-style-loader": "^4.1.3",
 		"webpack": "^5.90.1",
-		"webpack-cli": "^5.1.4"
+		"webpack-cli": "^5.1.4",
+		"webpack-dev-server": "^4.15.1"
 	},
 	"dependencies": {
 		"flexslider": "^2.7.2",

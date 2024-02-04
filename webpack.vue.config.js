@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const webpack = require("webpack");
 const vueLoaderPlugin = require("vue-loader/lib/plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const resolve = (subPath) => {
 	return path.resolve(__dirname, subPath);
 };
@@ -13,6 +14,20 @@ const config = {
 	output: {
 		path: resolve("dist"),
 		filename: "index.js",
+	},
+
+	devServer: {
+		static: {
+			directory: path.join(__dirname, "public"),
+		},
+		port: 8999,
+		open: true,
+		hot: true,
+		compress: true,
+		historyApiFallback: true,
+		client: {
+			overlay: false,
+		},
 	},
 	module: {
 		rules: [
@@ -25,7 +40,7 @@ const config = {
 				type: "asset",
 				parser: {
 					dataUrlCondition: {
-						maxSize: 4 * 1024,
+						maxSize: 224 * 1024,
 					},
 				},
 				generator: {
@@ -44,6 +59,7 @@ const config = {
 			jQuery: "jquery",
 		}),
 		new HtmlWebpackPlugin({
+			title: "最家首页",
 			template: resolve("./public/index.html"),
 			filename: "index.html",
 		}),
@@ -56,6 +72,7 @@ const config = {
 			],
 		}),
 		new vueLoaderPlugin(),
+		new CleanWebpackPlugin(),
 	],
 };
 
