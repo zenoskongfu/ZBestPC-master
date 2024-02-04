@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const $ = require("jquery");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 /**@type {import('webpack').Configuration} */
 module.exports = {
 	mode: "production",
@@ -33,6 +34,10 @@ module.exports = {
 		new webpack.ProvidePlugin({
 			$: "jquery",
 			jQuery: "jquery",
+		}),
+		new HtmlWebpackPlugin({
+			template: "./index.html",
+			filename: "index.html",
 		}),
 	],
 	devtool: "source-map",
