@@ -6,7 +6,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 /**@type {import('webpack').Configuration} */
 module.exports = {
 	mode: "production",
-	entry: "./index.js",
+	entry: path.resolve(__dirname, "src/index.js"),
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		filename: "index.js",
@@ -37,7 +37,7 @@ module.exports = {
 			jQuery: "jquery",
 		}),
 		new HtmlWebpackPlugin({
-			template: "./index.html",
+			template: path.resolve(__dirname, "public/index.html"),
 			filename: "index.html",
 		}),
 		new CopyWebpackPlugin({
