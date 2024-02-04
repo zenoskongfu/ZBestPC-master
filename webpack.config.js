@@ -2,6 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const $ = require("jquery");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 /**@type {import('webpack').Configuration} */
 module.exports = {
 	mode: "production",
@@ -38,6 +39,14 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: "./index.html",
 			filename: "index.html",
+		}),
+		new CopyWebpackPlugin({
+			patterns: [
+				{
+					from: path.resolve(__dirname, "./img"),
+					to: path.resolve(__dirname, "dist/img"),
+				},
+			],
 		}),
 	],
 	devtool: "source-map",
