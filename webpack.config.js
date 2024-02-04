@@ -19,6 +19,9 @@ module.exports = {
 						maxSize: 4 * 1024,
 					},
 				},
+				generator: {
+					filename: "img/[name].[hash][ext]",
+				},
 			},
 			{
 				test: /\.css$/,
