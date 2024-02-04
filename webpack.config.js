@@ -1,15 +1,17 @@
 const path = require("path");
 const webpack = require("webpack");
-const $ = require("jquery");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 /**@type {import('webpack').Configuration} */
 module.exports = {
 	mode: "production",
-	entry: path.resolve(__dirname, "src/index.js"),
+	entry: {
+		index: path.resolve(__dirname, "src/index.js"),
+		login: path.resolve(__dirname, "./src/login.js"),
+	},
 	output: {
 		path: path.resolve(__dirname, "dist"),
-		filename: "index.js",
+		filename: "[name].js",
 	},
 	module: {
 		rules: [
@@ -39,6 +41,12 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, "public/index.html"),
 			filename: "index.html",
+			chunks: ["index"],
+		}),
+		new HtmlWebpackPlugin({
+			template: path.resolve(__dirname, "public/login.html"),
+			filename: "login.html",
+			chunks: ["login"],
 		}),
 		new CopyWebpackPlugin({
 			patterns: [
