@@ -3,6 +3,9 @@ import "flexslider";
 import "./js/public.js";
 import "./js/nav.js";
 
+import "./css/public.css";
+import "./css/index.css";
+
 $(function () {
 	$("#home_slider").flexslider({
 		animation: "slide",
